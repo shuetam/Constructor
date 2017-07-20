@@ -1,0 +1,156 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1"
+        mc:Ignorable="d"
+        Title="Constructor" Height="650" Width="800"  Background="#fff3f3f3" ResizeMode="NoResize" >
+    <Window.Resources>
+        <ResourceDictionary Source="MyStyles.xaml"/>
+    </Window.Resources>
+
+
+
+
+    <Grid Margin="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0,-40,0,40">
+            <RadioButton x:Name="BelkaObciazonaSilaSkupiona"  Content="Belka obciążona siłą skupioną" GroupName="Scheme"  Style="{StaticResource ResourceKey=StyleToggleButton}"  Margin="20,70,500,0" />
+            <RadioButton x:Name="BelkaZObciazeniemCiaglym" Content="Belka z obciążeniem ciągłym" GroupName="Scheme"  Style="{StaticResource ResourceKey=StyleToggleButton}"  Margin="20,5,500,0" />
+            <RadioButton x:Name="WspornikObciazonySilaSkupiona" Content="Wspornik obciążony siłą skupioną" GroupName="Scheme" Style="{StaticResource ResourceKey=StyleToggleButton}"  Margin="20,5,500,0" />
+            <RadioButton x:Name="WspornikZObciazeniemCiaglym" Content="Wspornik z obciążeniem ciągłym" GroupName="Scheme" Style="{StaticResource ResourceKey=StyleToggleButton}"  Margin="20,5,500,0"/>
+        </StackPanel>
+
+      
+        <WrapPanel  Grid.Row="0" Margin="280,10,80,0" Visibility="{Binding IsChecked, ElementName=BelkaObciazonaSilaSkupiona,  Converter={StaticResource b2v}}" >
+            <Image Name="image2" Source="Images/BelkaJedno.JPG" HorizontalAlignment="Left" Height="201" Margin="0,10,0,0" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.5,0.5" />
+            <Label  Margin="20,20,0,0" Content="L:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="BeamLenght"/>
+            <Label  Margin="0,20,0,0" Content="[m]" />
+            <Label   Margin="20,20,0,0" Content="P:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="PLoadValue"/>
+            <Label  Margin="0,20,0,0" Content="[kN]" />
+            <Label  Margin="20,20,0,0" Content="x:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="PxValue"/>
+            <Label  Margin="0,20,0,0" Content="[m]" />
+        </WrapPanel>
+
+
+        <WrapPanel  Grid.Row="0" Margin="280,10,80,0" Visibility="{Binding IsChecked, ElementName=BelkaZObciazeniemCiaglym,  Converter={StaticResource b2v}}" >
+            <Image Name="image3" Source="Images/BelkaCiagle.JPG" HorizontalAlignment="Left" Height="201" Margin="0,10,0,0" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.5,0.5" />
+            <Label  Margin="20,20,0,0" Content="L:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="BeamLenght"/>
+            <Label  Margin="0,20,0,0" Content="[m]" />
+            <Label   Margin="20,20,0,0" Content="q:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="qLoadValue"/>
+            <Label  Margin="0,20,0,0" Content="[kN/m]" />
+        </WrapPanel>
+
+        <WrapPanel  Grid.Row="0" Margin="280,10,80,0" Visibility="{Binding IsChecked, ElementName=WspornikObciazonySilaSkupiona,  Converter={StaticResource b2v}}" >
+            <Image Name="image4" Source="Images/WspornikSkupiona.JPG" HorizontalAlignment="Left" Height="201" Margin="0,10,0,0" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.5,0.5" />
+            <Label  Margin="20,20,0,0" Content="L:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="BeamLenght"/>
+            <Label  Margin="0,20,0,0" Content="[m]" />
+            <Label   Margin="20,20,0,0" Content="P:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="PLoadValue"/>
+            <Label  Margin="0,20,0,0" Content="[kN]" />
+            <Label  Margin="20,20,0,0" Content="x:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="PxValue"/>
+            <Label  Margin="0,20,0,0" Content="[m]" />
+        </WrapPanel>
+
+
+        <WrapPanel  Grid.Row="0" Margin="280,10,80,0" Visibility="{Binding IsChecked, ElementName=WspornikZObciazeniemCiaglym,  Converter={StaticResource b2v}}" >
+            <Image Name="image5" Source="Images/WspornikCiagla.JPG" HorizontalAlignment="Left" Height="201" Margin="0,10,0,0" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.5,0.5" />
+            <Label  Margin="20,20,0,0" Content="L:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="BeamLenght"/>
+            <Label  Margin="0,20,0,0" Content="[m]" />
+            <Label   Margin="20,20,0,0" Content="q:"  />
+            <TextBox  Height="23" Margin="0,20,0,0" TextWrapping="Wrap"  Width="50" TextChanged="qLoadValue"/>
+            <Label  Margin="0,20,0,0" Content="[kN/m]" />
+        </WrapPanel>
+
+
+
+        <GroupBox Grid.Row="0" Name="Schemat" Header="Schemat statyczny" HorizontalAlignment="Stretch" Margin="0,0,0,20"  VerticalAlignment="Stretch" >
+
+        </GroupBox>
+        <GroupBox Grid.Row="1" Name="Material" Header="Materiał" HorizontalAlignment="Stretch" Margin="0,-10,0,0"  VerticalAlignment="Stretch" />
+        <TabControl Grid.Row="1" Name="Constructor" Background="#fff3f3f3" Margin="10,10,10,10">
+            <TabItem Header="Drewno" IsSelected="True">
+                <Grid>
+                    <ComboBox Name="comboBox1" IsEditable="False"   HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" Width="120">
+                        <ComboBoxItem Name="ProstokatDrew" Selected="ProstokątDrew">Prosotkąt</ComboBoxItem>
+                        <ComboBoxItem Name="DwuteowDrew" Selected="DwuteownikDrew">Dwuteownik</ComboBoxItem>
+                    </ComboBox>
+                    <GroupBox Header="Przekrój" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="238" Width="321"/>
+                    <Image Name="image1" Source="/WpfApplication1;component/Images/Przechwytywanie3.JPG" HorizontalAlignment="Left" Height="185" Margin="167,20,0,0" VerticalAlignment="Top" Width="149"/>
+
+
+
+                    <WrapPanel Name="DrewKwadrWym" Grid.Row="1" Margin="25,50,600,0" Visibility="{Binding IsSelected, ElementName=ProstokatDrew, Converter={StaticResource b2v}}">
+                        <Label   Margin="0,0,0,0" Content="B:"/>
+                        <TextBox x:Name="BDrewProst" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text=""  Width="50" TextChanged="BProfile"/>
+                        <Label  Margin="0,0,0,0" Content="[cm]" />
+
+                        <Label   Margin="0,10,0,0" Content="H:" />
+                        <TextBox x:Name="HDrewProst" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text=""  Width="50" TextChanged="HProfile"/>
+                        <Label  Margin="0,10,0,0" Content="[cm]" />
+                    </WrapPanel>
+
+
+                    <StackPanel Name="DrewDwutWym" Grid.Row="1" Margin="25,50,600,0" Visibility="{Binding IsSelected, ElementName=DwuteowDrew, Converter={StaticResource b2v}}">
+                        <WrapPanel>
+                            <Label   Margin="0,0,0,0" Content="B:" Width="22"/>
+                            <TextBox x:Name="BDrewDwut" Height="23" Margin="0,0,0,0" TextWrapping="Wrap" Text=""  Width="50" TextChanged="BProfile"/>
+                            <Label  Margin="0,0,0,0" Content="[cm]" />
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Label   Margin="0,10,0,0" Content="H:" Width="22"/>
+                            <TextBox x:Name="HDrewDwut" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text=""  Width="50" TextChanged="HProfile"/>
+                            <Label  Margin="0,10,0,0" Content="[cm]" />
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Label   Margin="0,10,0,0" Content="t:" Width="22" />
+                            <TextBox x:Name="tDrewDwut" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text=""  Width="50" TextChanged="tProfile"/>
+                            <Label  Margin="0,10,0,0" Content="[cm]" />
+                        </WrapPanel>
+                        <WrapPanel >
+                            <Label   Margin="0,10,0,0" Content="h:" Width="22" />
+                            <TextBox x:Name="hDrewDwut" Height="23" Margin="0,10,0,0" TextWrapping="Wrap" Text=""  Width="50" TextChanged="hProfile"/>
+                            <Label  Margin="0,10,0,0" Content="[cm]" />
+
+                        </WrapPanel>
+                    </StackPanel>
+                    <Label  Margin="360,20,286,200" Content="Klasa drewna:" />
+
+                    <ComboBox Margin="450,20,220,200">
+                        <ComboBoxItem Name="C24" Selected="WoodClass">C24</ComboBoxItem>
+                        <ComboBoxItem Name="C27" Selected="WoodClass">C27</ComboBoxItem>
+                        <ComboBoxItem Name="C30" Selected="WoodClass">C30</ComboBoxItem>
+                        <ComboBoxItem Name="C36" Selected="WoodClass">C36</ComboBoxItem>
+                    </ComboBox>
+                    <Button Margin="4,15,100,200" Content="Oblicz ->" FontSize="15" Click="WoodResults" HorizontalAlignment="Right" Width="100"/>
+                    <GroupBox Header="Wyniki" HorizontalAlignment="Left" Margin="360,54,0,0" VerticalAlignment="Top" Height="184" Width="374"/>
+                    <TextBox Name="Wyniki" IsReadOnly="True" Margin="370,72,19,0" VerticalAlignment="Top"  Height="155" VerticalScrollBarVisibility="Auto"/>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Stal" Width="50"  Background="#fff3f3f3">
+            </TabItem>
+
+
+            <TabItem Header="Beton" Width="60"  Background="#fff3f3f3">
+            </TabItem>
+
+        </TabControl>
+
+
+    </Grid>
+</Window>
